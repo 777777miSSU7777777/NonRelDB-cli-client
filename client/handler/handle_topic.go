@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"NonRelDB/log"
 	"bufio"
 	"fmt"
 	"net"
@@ -30,7 +29,8 @@ func HandleTopic(c net.Conn, r bufio.Reader, topic string) {
 		msg, err := r.ReadString('\n')
 
 		if err != nil {
-			log.Error.Panicln(err.Error())
+			fmt.Println("Could not read message from topic")
+			os.Exit(1)
 		}
 
 		fmt.Print(msg)

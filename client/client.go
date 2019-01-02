@@ -2,7 +2,6 @@ package main
 
 import (
 	"NonRelDB/client/handler"
-	"NonRelDB/log"
 	"bufio"
 	"flag"
 	"fmt"
@@ -32,7 +31,8 @@ func main() {
 	defer c.Close()
 
 	if err != nil {
-		log.Error.Panicln(err.Error())
+		fmt.Println("Could not connect to this server")
+		os.Exit(1)
 	}
 
 	if dump {
@@ -40,7 +40,8 @@ func main() {
 		dbDump, err := bufio.NewReader(c).ReadString('\n')
 
 		if err != nil {
-			log.Error.Panicln(err.Error())
+			fmt.Println("Could not receive database dump from server")
+			os.Exit(1)
 		}
 
 		fmt.Println(dbDump)
@@ -52,7 +53,7 @@ func main() {
 		dbRestore, err := bufio.NewReader(os.Stdin).ReadString('\n')
 
 		if err != nil {
-			log.Error.Panicln(err.Error())
+			fmt.Println("Could not restore database dump to server")
 		}
 
 		fmt.Fprintf(c, dbRestore)

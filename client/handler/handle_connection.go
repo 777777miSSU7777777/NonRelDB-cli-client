@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"NonRelDB/log"
 	"NonRelDB/util/regex"
 	"bufio"
 	"fmt"
@@ -25,7 +24,8 @@ func HandleConnection(c net.Conn) {
 		req = strings.Trim(req, "\n")
 
 		if err != nil {
-			log.Error.Panicln(err.Error())
+			fmt.Println("Could not send request to server")
+			os.Exit(1)
 		}
 
 		if regex.QueryReg.MatchString(req) {
@@ -33,7 +33,8 @@ func HandleConnection(c net.Conn) {
 			resp, err := netReader.ReadString('\n')
 
 			if err != nil {
-				log.Error.Panicln(err.Error())
+				fmt.Println("Could not receive response from server")
+				os.Exit(1)
 			}
 
 			fmt.Println(resp)
