@@ -28,12 +28,13 @@ func init() {
 // main entry point for client.
 func main() {
 	c, err := net.Dial("tcp", host+":"+port)
-	defer c.Close()
 
 	if err != nil {
 		fmt.Println("Could not connect to this server")
 		os.Exit(1)
 	}
+
+	defer c.Close()
 
 	if dump {
 		fmt.Fprintf(c, "dump\n")
