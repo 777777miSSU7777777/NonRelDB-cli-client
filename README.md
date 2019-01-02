@@ -18,7 +18,7 @@ In cloned repository you will find **Makefile** with following targets:
  - **run** - runs client with default configuration.
  
 ## Usage
-### Client's flags
+### Flags
  - **-host -h** - defines host ip (default is 127.0.0.1)
  - **-port -p** - defines host port (default is 9090)
  - **--dump** - requests full database dump in json format on stdout.  
