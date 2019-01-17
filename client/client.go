@@ -55,6 +55,7 @@ func main() {
 
 		if err != nil {
 			fmt.Println("Could not restore database dump to server")
+			os.Exit(1)
 		}
 
 		fmt.Fprintf(c, dbRestore)
