@@ -1,7 +1,7 @@
 package main
 
 import (
-	"NonRelDB/client/handler"
+	"NonRelDB-cli-client/client/handler"
 	"bufio"
 	"flag"
 	"fmt"

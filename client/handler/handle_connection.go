@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"NonRelDB/util/regex"
+	"NonRelDB-cli-client/util/regex"
 	"bufio"
 	"fmt"
 	"net"
